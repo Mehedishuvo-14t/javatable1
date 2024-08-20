@@ -31,16 +31,15 @@ public class home extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        newb = new javax.swing.JButton();
+        newbook = new javax.swing.JButton();
+        issue = new javax.swing.JButton();
+        ret = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1366, 678));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setText("jButton2");
@@ -58,25 +57,45 @@ public class home extends javax.swing.JFrame {
         jButton6.setText("jButton6");
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6121, 2567, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setText("New Student");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 158, 54));
+        newb.setBackground(new java.awt.Color(0, 102, 204));
+        newb.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        newb.setText("New Student");
+        newb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newbActionPerformed(evt);
+            }
+        });
+        getContentPane().add(newb, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 158, 54));
 
-        jButton8.setBackground(new java.awt.Color(255, 102, 255));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton8.setText("New Book");
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 158, 54));
+        newbook.setBackground(new java.awt.Color(255, 102, 255));
+        newbook.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        newbook.setText("New Book");
+        newbook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newbookActionPerformed(evt);
+            }
+        });
+        getContentPane().add(newbook, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 158, 54));
 
-        jButton7.setBackground(new java.awt.Color(51, 153, 255));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton7.setText("Issue Book");
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 158, 54));
+        issue.setBackground(new java.awt.Color(51, 153, 255));
+        issue.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        issue.setText("Issue Book");
+        issue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                issueActionPerformed(evt);
+            }
+        });
+        getContentPane().add(issue, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 158, 54));
 
-        jButton9.setBackground(new java.awt.Color(255, 153, 0));
-        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton9.setText("Return Book");
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 158, 54));
+        ret.setBackground(new java.awt.Color(255, 153, 0));
+        ret.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ret.setText("Return Book");
+        ret.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ret, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 158, 54));
 
         jButton10.setBackground(new java.awt.Color(255, 255, 0));
         jButton10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -103,6 +122,22 @@ public class home extends javax.swing.JFrame {
        setVisible(false);
        new login().setVisible(true);
     }//GEN-LAST:event_logoutActionPerformed
+
+    private void newbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newbActionPerformed
+new newstudent1().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_newbActionPerformed
+
+    private void newbookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newbookActionPerformed
+new newbook().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_newbookActionPerformed
+
+    private void issueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issueActionPerformed
+new issuebook().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_issueActionPerformed
+
+    private void retActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retActionPerformed
+new returnbook().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_retActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,17 +175,17 @@ public class home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton issue;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton logout;
+    private javax.swing.JButton newb;
+    private javax.swing.JButton newbook;
+    private javax.swing.JButton ret;
     // End of variables declaration//GEN-END:variables
 }
