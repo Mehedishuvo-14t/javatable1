@@ -35,7 +35,7 @@ public class home extends javax.swing.JFrame {
         newbook = new javax.swing.JButton();
         issue = new javax.swing.JButton();
         ret = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        sta = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -57,69 +57,81 @@ public class home extends javax.swing.JFrame {
         jButton6.setText("jButton6");
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6121, 2567, -1, -1));
 
-        newb.setBackground(new java.awt.Color(0, 102, 204));
+        newb.setBackground(new java.awt.Color(204, 255, 204));
         newb.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        newb.setForeground(new java.awt.Color(255, 51, 0));
         newb.setText("New Student");
         newb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newbActionPerformed(evt);
             }
         });
-        getContentPane().add(newb, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 158, 54));
+        getContentPane().add(newb, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 158, 60));
 
-        newbook.setBackground(new java.awt.Color(255, 102, 255));
+        newbook.setBackground(new java.awt.Color(204, 255, 204));
         newbook.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        newbook.setForeground(new java.awt.Color(255, 51, 0));
         newbook.setText("New Book");
         newbook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newbookActionPerformed(evt);
             }
         });
-        getContentPane().add(newbook, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 158, 54));
+        getContentPane().add(newbook, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 158, 60));
 
-        issue.setBackground(new java.awt.Color(51, 153, 255));
+        issue.setBackground(new java.awt.Color(204, 255, 204));
         issue.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        issue.setForeground(new java.awt.Color(255, 51, 0));
         issue.setText("Issue Book");
         issue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 issueActionPerformed(evt);
             }
         });
-        getContentPane().add(issue, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 158, 54));
+        getContentPane().add(issue, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 158, 60));
 
-        ret.setBackground(new java.awt.Color(255, 153, 0));
+        ret.setBackground(new java.awt.Color(204, 255, 204));
         ret.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ret.setForeground(new java.awt.Color(255, 51, 0));
         ret.setText("Return Book");
         ret.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 retActionPerformed(evt);
             }
         });
-        getContentPane().add(ret, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 158, 54));
+        getContentPane().add(ret, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 158, 60));
 
-        jButton10.setBackground(new java.awt.Color(255, 255, 0));
-        jButton10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton10.setText("Statistics");
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 158, 54));
+        sta.setBackground(new java.awt.Color(204, 255, 204));
+        sta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        sta.setForeground(new java.awt.Color(255, 51, 0));
+        sta.setText("Statistics");
+        sta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                staActionPerformed(evt);
+            }
+        });
+        getContentPane().add(sta, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 158, 60));
 
+        logout.setBackground(new java.awt.Color(204, 255, 204));
         logout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        logout.setForeground(new java.awt.Color(255, 51, 0));
         logout.setText("Logout");
         logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutActionPerformed(evt);
             }
         });
-        getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 20, 158, 54));
+        getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 20, 158, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/management/hans-jurgen-weinhardt-FZ5nx86tP2U-unsplash.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 680));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 620));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-       setVisible(false);
+       //setVisible(false);
        new login().setVisible(true);
     }//GEN-LAST:event_logoutActionPerformed
 
@@ -132,12 +144,16 @@ new newbook().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_newbookActionPerformed
 
     private void issueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issueActionPerformed
-new issuebook().setVisible(true);        // TODO add your handling code here:
+new issue().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_issueActionPerformed
 
     private void retActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retActionPerformed
 new returnbook().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_retActionPerformed
+
+    private void staActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staActionPerformed
+new statistics().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_staActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,7 +192,6 @@ new returnbook().setVisible(true);        // TODO add your handling code here:
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton issue;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -187,5 +202,6 @@ new returnbook().setVisible(true);        // TODO add your handling code here:
     private javax.swing.JButton newb;
     private javax.swing.JButton newbook;
     private javax.swing.JButton ret;
+    private javax.swing.JButton sta;
     // End of variables declaration//GEN-END:variables
 }

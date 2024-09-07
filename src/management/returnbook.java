@@ -166,7 +166,8 @@ public class returnbook extends javax.swing.JFrame {
     }//GEN-LAST:event_retActionPerformed
 
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
-System.exit(0);        // TODO add your handling code here:
+//System.exit(0);       
+setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_closeActionPerformed
 
     /**

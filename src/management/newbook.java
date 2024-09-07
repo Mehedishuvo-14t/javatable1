@@ -8,8 +8,10 @@ package management;
  *
  * @author Shovo
  */
+import project.connectionprovider;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 public class newbook extends javax.swing.JFrame {
 
     /**
@@ -18,6 +20,7 @@ public class newbook extends javax.swing.JFrame {
     public newbook() {
         initComponents();
         connect();
+        insert();
     }
 Connection con;
 PreparedStatement pst;
@@ -35,10 +38,22 @@ public void connect(){
     System.out.println(e);
 }
 }
+public void insert(){
+    String q="select *from book";
+    try{
+    pst=con.prepareStatement(q);
+    ResultSet rs=pst.executeQuery();
+    tab.setModel(DbUtils.resultSetToTableModel(rs));
+    }catch(Exception e){
+        System.out.println(e);
+    }
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tab1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -51,56 +66,83 @@ public void connect(){
         txtpy = new javax.swing.JTextField();
         save = new javax.swing.JButton();
         close = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tab = new javax.swing.JTable();
+        del = new javax.swing.JButton();
+        ed = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+
+        tab1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tab1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(325, 125));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 51));
         jLabel1.setText("Book ID");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 79, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 51));
         jLabel2.setText("Name");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 140, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 0));
         jLabel3.setText("Publisher");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 209, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 51));
         jLabel4.setText("Price");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 273, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 0));
         jLabel5.setText("Publisher Year");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 335, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, -1));
 
         txtid.setBackground(new java.awt.Color(255, 255, 204));
         txtid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 79, 235, -1));
+        txtid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtidActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 250, 30));
 
         txtn.setBackground(new java.awt.Color(255, 255, 204));
         txtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        getContentPane().add(txtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 140, 235, -1));
+        getContentPane().add(txtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 250, 30));
 
         txtp.setBackground(new java.awt.Color(255, 255, 204));
         txtp.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        getContentPane().add(txtp, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 209, 235, -1));
+        getContentPane().add(txtp, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 250, 30));
 
         txtpr.setBackground(new java.awt.Color(255, 255, 204));
         txtpr.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        getContentPane().add(txtpr, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 273, 235, -1));
+        getContentPane().add(txtpr, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 250, 30));
 
         txtpy.setBackground(new java.awt.Color(255, 255, 204));
         txtpy.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        getContentPane().add(txtpy, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 335, 235, -1));
+        getContentPane().add(txtpy, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 250, 30));
 
         save.setBackground(new java.awt.Color(204, 255, 153));
         save.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -110,7 +152,7 @@ public void connect(){
                 saveActionPerformed(evt);
             }
         });
-        getContentPane().add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 417, -1, -1));
+        getContentPane().add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 90, 40));
 
         close.setBackground(new java.awt.Color(204, 255, 153));
         close.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -120,11 +162,45 @@ public void connect(){
                 closeActionPerformed(evt);
             }
         });
-        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 417, -1, -1));
+        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 90, 40));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/management/hans-jurgen-weinhardt-FZ5nx86tP2U-unsplash.jpg"))); // NOI18N
-        jLabel7.setText("jLabel7");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
+        tab.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tab);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 530, 367));
+
+        del.setBackground(new java.awt.Color(204, 255, 153));
+        del.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        del.setText("Delete");
+        del.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delActionPerformed(evt);
+            }
+        });
+        getContentPane().add(del, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, 90, 40));
+
+        ed.setBackground(new java.awt.Color(204, 255, 153));
+        ed.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ed.setText("Edit");
+        ed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ed, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 430, 90, 40));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/management/hans-jurgen-weinhardt-FZ5nx86tP2U-unsplash.jpg"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 1100, 510));
 
         pack();
         setLocationRelativeTo(null);
@@ -145,19 +221,71 @@ public void connect(){
          pst.setString(5, Publisher_Year);
          pst.executeUpdate();
            JOptionPane.showMessageDialog(this, "saved successfully");
-          txtid.setText("");
-           txtn.setText("");
-         txtp.setText(""); 
-         txtpr.setText("");
-         txtpy.setText("");
+     setVisible(false);
+     new newbook().setVisible(true);
        }catch(Exception e){
           System.out.println(e);
        }
+       insert();
     }//GEN-LAST:event_saveActionPerformed
 
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
-System.exit(0);        // TODO add your handling code here:
+//System.exit(0);   
+setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_closeActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+   try{
+       con=connectionprovider.getcon();
+       pst=con.prepareStatement("select *from book");
+       ResultSet r=pst.executeQuery();
+       //pst.executeUpdate();
+       tab1.setModel(DbUtils.resultSetToTableModel(r));
+   } catch(Exception e){
+       System.out.println(e);
+   }    
+    }//GEN-LAST:event_formComponentShown
+
+    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtidActionPerformed
+
+    private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
+       String Book_ID=txtid.getText();
+       try{
+           String q="delete from book where Book_ID='"+Book_ID+"'";
+       pst=con.prepareStatement(q);
+       pst.execute();
+       pst.executeUpdate();
+      
+           JOptionPane.showMessageDialog(null, "Deleted");
+           setVisible(false);
+           new newbook().setVisible(true);
+       }catch(Exception e){
+          JOptionPane.showMessageDialog(null,e);  
+       }
+       
+    }//GEN-LAST:event_delActionPerformed
+
+    private void edActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edActionPerformed
+String v1=txtid.getText();
+String v2=txtn.getText();
+String v3=txtp.getText();
+String v4=txtpr.getText();
+String v5=txtpy.getText();
+String q="update book set Book_ID='"+v1+"',Name='"+v2+"',Publisher='"+v3+"',Price='"+v4+"',Publisher_Year='"+v5+"' where Book_ID='"+v1+"'";
+
+try{
+pst=con.prepareStatement(q);
+pst.execute();
+pst.executeUpdate();
+JOptionPane.showMessageDialog(null, "successfully updated");
+}catch(Exception e){
+  JOptionPane.showMessageDialog(null,e);  
+}
+setVisible(false);
+new newbook().setVisible(true);
+    }//GEN-LAST:event_edActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,13 +324,19 @@ System.exit(0);        // TODO add your handling code here:
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton close;
+    private javax.swing.JButton del;
+    private javax.swing.JButton ed;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton save;
+    private javax.swing.JTable tab;
+    private javax.swing.JTable tab1;
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtn;
     private javax.swing.JTextField txtp;

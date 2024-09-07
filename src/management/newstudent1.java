@@ -9,23 +9,38 @@ package management;
  * @author Shovo
  */
 import java.sql.*;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import jdk.jshell.JShellException;
+import net.proteanit.sql.DbUtils;
+import project.connectionprovider;
 public class newstudent1 extends javax.swing.JFrame {
 
     /**
      * Creates new form newstudent
      */
- 
+      Connection con=null;
+    PreparedStatement pst=null;
+    ResultSet r=null;
+
     public newstudent1() {
         initComponents();
      Connect();
+    insert();
     }
-       Connection con;
-    PreparedStatement pst;
-
+ public void insert(){
+     String q="select *from student";
+     try{
+         pst=con.prepareStatement(q);
+         ResultSet r=pst.executeQuery();
+         tab1.setModel(DbUtils.resultSetToTableModel(r));
+     }catch(Exception e){
+         JOptionPane.showMessageDialog(null, e);
+     }
+ }
         public void Connect(){
         
         
@@ -75,60 +90,71 @@ public class newstudent1 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtcname = new javax.swing.JComboBox<>();
-        txtbname = new javax.swing.JComboBox<>();
-        txtfname = new javax.swing.JTextField();
-        txtname = new javax.swing.JTextField();
+        txtcn = new javax.swing.JComboBox<>();
+        txtbn = new javax.swing.JComboBox<>();
+        txtf = new javax.swing.JTextField();
+        txtn = new javax.swing.JTextField();
         txtid = new javax.swing.JTextField();
         close = new javax.swing.JButton();
         save = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tab1 = new javax.swing.JTable();
+        del = new javax.swing.JButton();
+        ed = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 0));
         jLabel1.setText("Student ID");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 94, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 0));
         jLabel2.setText("Name");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 155, 91, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 91, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 51, 0));
         jLabel3.setText("Father Name");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 228, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 51, 0));
         jLabel4.setText("Course Name");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 292, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 51, 0));
         jLabel5.setText("Branch Name");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 367, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
 
-        txtcname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtcname.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BSC" }));
-        getContentPane().add(txtcname, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 293, 199, -1));
+        txtcn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtcn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BSC" }));
+        getContentPane().add(txtcn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 220, 40));
 
-        txtbname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtbname.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "CSE", "EEE", "Civil", "Mechanical" }));
-        getContentPane().add(txtbname, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 368, 199, -1));
+        txtbn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtbn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "CSE", "EEE", "Civil", "Mechanical" }));
+        getContentPane().add(txtbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 220, 40));
 
-        txtfname.setBackground(new java.awt.Color(255, 255, 102));
-        txtfname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(txtfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 229, 199, -1));
+        txtf.setBackground(new java.awt.Color(255, 255, 102));
+        txtf.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(txtf, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 220, 40));
 
-        txtname.setBackground(new java.awt.Color(255, 255, 102));
-        txtname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 156, 199, -1));
+        txtn.setBackground(new java.awt.Color(255, 255, 102));
+        txtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(txtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 220, 40));
 
         txtid.setBackground(new java.awt.Color(255, 255, 102));
         txtid.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 95, 199, -1));
+        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 30, 220, 40));
 
         close.setBackground(new java.awt.Color(204, 204, 204));
         close.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -138,7 +164,7 @@ public class newstudent1 extends javax.swing.JFrame {
                 closeActionPerformed(evt);
             }
         });
-        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 437, -1, -1));
+        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 437, -1, 40));
 
         save.setBackground(new java.awt.Color(204, 204, 204));
         save.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -148,29 +174,63 @@ public class newstudent1 extends javax.swing.JFrame {
                 saveActionPerformed(evt);
             }
         });
-        getContentPane().add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, -1, -1));
+        getContentPane().add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 437, -1, 40));
+
+        tab1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Student_ID", "Name", "Father_Name", "Course_Name", "Branch_Name"
+            }
+        ));
+        jScrollPane1.setViewportView(tab1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(579, 26, 490, 380));
+
+        del.setBackground(new java.awt.Color(204, 204, 204));
+        del.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        del.setText("Delete");
+        del.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delActionPerformed(evt);
+            }
+        });
+        getContentPane().add(del, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 463, 80, 40));
+
+        ed.setBackground(new java.awt.Color(204, 204, 204));
+        ed.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ed.setText("Edit");
+        ed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ed, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 463, 80, 40));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/management/hans-jurgen-weinhardt-FZ5nx86tP2U-unsplash.jpg"))); // NOI18N
-        jLabel6.setText("jLabel6");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 520));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 580));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
-System.exit(0);        // TODO add your handling code here:
+setVisible(false);      // TODO add your handling code here:
     }//GEN-LAST:event_closeActionPerformed
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         try{
           String Student_ID=txtid.getText();
-          String Name=txtname.getText();
-          String Father_Name=txtfname.getText();
-          String Course_Name=(String)txtcname.getSelectedItem();
+          String Name=txtn.getText();
+          String Father_Name=txtf.getText();
+          String Course_Name=(String)txtcn.getSelectedItem();
           
-          String Branch_Name=(String)txtbname.getSelectedItem();
-          
+          String Branch_Name=(String)txtbn.getSelectedItem();
+          Connection con=connectionprovider.getcon();
           pst=con.prepareStatement("insert into student(Student_ID,Name,Father_Name,Course_Name,Branch_Name)values(?,?,?,?,?)");
           pst.setString(1, Student_ID);
           pst.setString(2, Name);
@@ -179,15 +239,58 @@ System.exit(0);        // TODO add your handling code here:
           pst.setString(5, Branch_Name);
           pst.executeUpdate();
           JOptionPane.showMessageDialog(this, "successfully saved");
-          txtid.setText("");
+         /* txtid.setText("");
           txtname.setText("");
           txtfname.setText("");
           txtcname.setSelectedIndex(-1);
-          txtbname.setSelectedIndex(-1);
+          txtbname.setSelectedIndex(-1);*/
         }catch(Exception e){
             System.out.println(e);
         }
+        insert();
+        setVisible(false);
+        new newstudent1().setVisible(true);
     }//GEN-LAST:event_saveActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+
+    }//GEN-LAST:event_formComponentShown
+
+    private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
+       String v1=txtid.getText();
+       String q="delete from student where Student_ID='"+v1+"'";
+       try{
+           pst=con.prepareStatement(q);
+           pst.execute();
+           pst.executeUpdate();
+           JOptionPane.showMessageDialog(null, "Deleted");
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e);
+       }
+       setVisible(false);
+       new newstudent1().setVisible(true);
+    }//GEN-LAST:event_delActionPerformed
+
+    private void edActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edActionPerformed
+        String v1=txtid.getText();
+        String v2=txtn.getText();
+        String v3=txtf.getText();
+        String v4=(String)txtcn.getSelectedItem();
+        String v5=(String)txtbn.getSelectedItem();
+        String q="update student set Student_ID='"+v1+"',Name='"+v2+"',Father_Name='"+v3+"',Course_Name='"+v4+"',Branch_Name='"+v5+"' where Student_ID='"+v1+"'";
+        
+        try{
+            pst=con.prepareStatement(q);
+            pst.execute();
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null,"updated");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+        setVisible(false);
+        new newstudent1().setVisible(true);
+    
+    }//GEN-LAST:event_edActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,17 +330,21 @@ System.exit(0);        // TODO add your handling code here:
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton close;
+    private javax.swing.JButton del;
+    private javax.swing.JButton ed;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton save;
-    private javax.swing.JComboBox<String> txtbname;
-    private javax.swing.JComboBox<String> txtcname;
-    private javax.swing.JTextField txtfname;
+    private javax.swing.JTable tab1;
+    private javax.swing.JComboBox<String> txtbn;
+    private javax.swing.JComboBox<String> txtcn;
+    private javax.swing.JTextField txtf;
     private javax.swing.JTextField txtid;
-    private javax.swing.JTextField txtname;
+    private javax.swing.JTextField txtn;
     // End of variables declaration//GEN-END:variables
 }

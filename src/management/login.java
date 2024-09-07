@@ -91,17 +91,23 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-if(txtuname.getText().equals("admin") && txtpass.getText().equals("admin")){
+if(txtuname.getText().equals("admin") ){
     //setVisible(false);
+    if(txtpass.getText().equals("admin")){
+        
     new home().setVisible(true);
 }
+    else{
+        JOptionPane.showMessageDialog(this, "incorrect password");
+    }
+}
 else{
-    JOptionPane.showMessageDialog(this,"incorrect user name or password");
+    JOptionPane.showMessageDialog(this,"incorrect user name ");
 }
 txtuname.setText("");
 txtpass.setText("");
     }//GEN-LAST:event_loginActionPerformed
-
+    
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
 System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_closeActionPerformed
